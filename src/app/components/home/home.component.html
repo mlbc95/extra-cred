@@ -8,13 +8,12 @@
     <hr>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
     <div class='center-btn'>
-        <button mat-raised-button color="primary" >Login</button>
-        <button mat-raised-button style="margin-left:.75rem">Register</button>
+        <button mat-raised-button color="primary" [routerLink]="['/login']" >Login</button>
+        <button mat-raised-button style="margin-left:.75rem" [routerLink]="['/register']">Register</button>
     </div>
 
 </div>
 <video playsinline autoplay muted loop  id="bgvid">
-    <source src="../../../assets/thesoundoffilmmp4.mp4" type="video/mp4">
-        
+    <source src="../../../assets/thesoundoffilmmp4.mp4" type="video/mp4">        
 </video>
 
