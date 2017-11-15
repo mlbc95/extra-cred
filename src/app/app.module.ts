@@ -1,8 +1,11 @@
 
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { NgModule } from '@angular/core';
 import {DevExtremeModule} from 'devextreme-angular';
+import {MaterialImportModule} from './material-module';
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from '../app/components/login/login.component';
@@ -47,6 +50,8 @@ const appRoutes: Routes= [
     BrowserModule,
     DevExtremeModule,
     RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    MaterialImportModule
   ],
   providers: [],
   bootstrap: [AppComponent]
