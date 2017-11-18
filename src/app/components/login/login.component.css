@@ -1,0 +1,18 @@
+.login-wrapper{
+    height: 100vh;
+    width: 100vw;
+    background: url("../../../assets/umsl_night.jpg")no-repeat;
+    background-position: center center;
+    background-size: cover;    
+}
+
+.login-form{
+    position: absolute;
+    top: 65vh;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.card{
+    background-color: lightgrey;
+    opacity: 0.90;    
+}

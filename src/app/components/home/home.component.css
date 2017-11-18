@@ -33,14 +33,14 @@ video#bgvid {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  /* background: url(polina.jpg) no-repeat; */
+   background: url(../../../assets/thesoundoffilmmp4.jpg) no-repeat; 
   background-size: cover; 
 }
 
 
 @media screen and (max-device-width: 800px) {
   html {
-       /* background: url(polina.jpg) #000 no-repeat center center fixed; */
+       background: url(../../../assets/thesoundoffilmmp4.jpg) #000 no-repeat center center fixed;
   }
   #bgvid {
       display: none;

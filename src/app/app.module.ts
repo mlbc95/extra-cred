@@ -1,10 +1,13 @@
 
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { NgModule } from '@angular/core';
 import {DevExtremeModule} from 'devextreme-angular';
 import {MaterialImportModule} from './material-module';
+import { HttpModule } from '@angular/http'
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 
 import { AppComponent } from './app.component';
@@ -18,6 +21,8 @@ import { PublicComponent } from '../app/components/layouts/public/public.compone
 import { UserComponent } from '../app/components/layouts/user/user.component';
 import { NavbarComponent } from '../app/components/navbar/navbar.component';
 import { SidebarComponent } from '../app/components/sidebar/sidebar.component';
+
+import {AuthService} from '../app/services/auth.service'
 
 const appRoutes: Routes= [
   {path:'', component:PublicComponent, children:[
@@ -51,9 +56,14 @@ const appRoutes: Routes= [
     DevExtremeModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    MaterialImportModule
+    MaterialImportModule,
+    FormsModule,
+    HttpModule,
+    FlashMessagesModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
