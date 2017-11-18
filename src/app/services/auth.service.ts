@@ -20,7 +20,6 @@ export class AuthService {
 
   authenticateUser(user)
   {
-    console.log(user);
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     return this.http.post(this.baseUrl + "students/login",user,{headers:headers})

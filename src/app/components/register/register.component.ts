@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
       this.authService.register(user).subscribe(data =>{
         if(data.success)
         {
-          console.log(data)
+   
           this.flashMessage.show(data.message,{
             cssClass:"alert-success",
             timeout:5000
