@@ -1,41 +1,42 @@
-
-import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { NgModule } from '@angular/core';
-import {DevExtremeModule} from 'devextreme-angular';
-import {MaterialImportModule} from './material-module';
-import { HttpModule } from '@angular/http'
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { DevExtremeModule } from 'devextreme-angular';
+import { MaterialImportModule } from './material-module';
 
-
-import { AppComponent } from './app.component';
-import { LoginComponent } from '../app/components/login/login.component';
-import { RegisterComponent } from '../app/components/register/register.component';
-import { HomeComponent } from '../app/components/home/home.component';
-import { DashboardComponent } from '../app/components/dashboard/dashboard.component';
-import { SearchComponent } from '../app/components/search/search.component';
 import { ClassesComponent } from '../app/components/classes/classes.component';
+import { DashboardComponent } from '../app/components/dashboard/dashboard.component';
+import { HomeComponent } from '../app/components/home/home.component';
 import { PublicComponent } from '../app/components/layouts/public/public.component';
 import { UserComponent } from '../app/components/layouts/user/user.component';
+import { LoginComponent } from '../app/components/login/login.component';
 import { NavbarComponent } from '../app/components/navbar/navbar.component';
+import { RegisterComponent } from '../app/components/register/register.component';
+import { SearchComponent } from '../app/components/search/search.component';
 import { SidebarComponent } from '../app/components/sidebar/sidebar.component';
+import { AppComponent } from './app.component';
 
-import {AuthService} from '../app/services/auth.service'
+import { AuthService } from '../app/services/auth.service';
+import { HttpService } from '../app/services/http.service';
+import { ResponseInterceptor } from './interceptors/responses.interceptor';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
-const appRoutes: Routes= [
-  {path:'', component:PublicComponent, children:[
-    {path:'', component:HomeComponent},
-    {path:'login', component:LoginComponent},
-    {path:'register',component:RegisterComponent}
+
+const appRoutes: Routes = [
+  {path: '', component: PublicComponent, children: [
+    {path: '', component: HomeComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent}
   ]},
-  {path:'user',component:UserComponent, children:[
-    {path:'dashboard',component:DashboardComponent}
-    
+  {path: 'user', component: UserComponent, children: [
+    {path: 'dashboard', component: DashboardComponent}
   ]}
-  
-]
+];
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ const appRoutes: Routes= [
     UserComponent,
     NavbarComponent,
     SidebarComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,10 +61,17 @@ const appRoutes: Routes= [
     MaterialImportModule,
     FormsModule,
     HttpModule,
-    FlashMessagesModule
+    FlashMessagesModule,
+    HttpClientModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    HttpService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

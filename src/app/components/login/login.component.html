@@ -3,7 +3,7 @@
   <div class="login-form center-object">
 
     <div class="card">
-      <form class="form-group"> 
+      <form class="form-group">
         <mat-form-field class="form-control">
           <input matInput [(ngModel)]="userEmail" name="email" placeholder="Email">
         </mat-form-field>
@@ -12,11 +12,15 @@
         </mat-form-field>
       </form>
       <button mat-raised-button color="primary" (click)="login()" type="submit">Login</button>
-     
+
     </div>
 
   </div>
 
 </div>
+
+<ng-template *ngIf="showSpinner">
+  <app-spinner></app-spinner>
+</ng-template>
 
 
