@@ -7,3 +7,9 @@
   opacity: 0.75;
   background: rgba(47, 79, 79, 0.75);
 }
+
+mat-spinner {
+  position: relative;
+  margin: auto;
+  top: 50%;
+}

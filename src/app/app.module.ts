@@ -25,6 +25,7 @@ import { AuthService } from '../app/services/auth.service';
 import { HttpService } from '../app/services/http.service';
 import { ResponseInterceptor } from './interceptors/responses.interceptor';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SpinnerService } from './services/spinner.service';
 
 
 const appRoutes: Routes = [
@@ -71,7 +72,8 @@ const appRoutes: Routes = [
       provide: HTTP_INTERCEPTORS,
       useClass: ResponseInterceptor,
       multi: true
-    }
+    },
+    SpinnerService
   ],
   bootstrap: [AppComponent]
 })
