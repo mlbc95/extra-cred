@@ -20,9 +20,9 @@ import {
     MatToolbarModule,
     MatToolbarRow
   } from '@angular/material';
-  
+
   import {NgModule} from '@angular/core';
-  
+
   @NgModule({
     imports: [
       MatButtonModule,
@@ -44,7 +44,7 @@ import {
       MatIconModule,
       MatProgressSpinnerModule,
       MatToolbarModule,
-    
+
   ],
     exports: [
       MatButtonModule,
@@ -69,4 +69,3 @@ import {
   ],
   })
   export class MaterialImportModule {}
-  
