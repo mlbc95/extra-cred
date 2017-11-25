@@ -1,9 +1,10 @@
-import { StateKey } from '@angular/platform-browser';
-import { Subscription } from 'rxjs/Rx';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { Subscription } from 'rxjs/Rx';
+
+import { AuthService } from '../../services/auth.service';
+import { NotificationService } from '../../services/notification.service';
 import { SpinnerService } from '../../services/spinner.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private router: Router,
     private flashMessage: FlashMessagesService,
-    private spinnerService: SpinnerService
+    private spinnerService: SpinnerService,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -38,14 +40,21 @@ export class LoginComponent implements OnInit, OnDestroy {
 
    this.authService.authenticateUser(user).subscribe(data => {
      if (data.success) {
-       this.flashMessage.show(data.message, {
-         cssClass: 'alert-success',
-         timeout: 5000
-       });
-       this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
+      //  this.flashMessage.show(data.message, {
+      //    cssClass: 'alert-success',
+      //    timeout: 5000
+      //  });
+      this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
         this.showSpinner = state;
       });
-      this.router.navigate(['/user/dashboard']);
+      this.notificationService.showSuccess(data.title, data.message)
+        .then((result) => {
+          console.log(result);
+          this.router.navigate(['/user/dashboard']);
+        })
+        .catch((reason) => {
+          console.log('--> Alert dismissed: ' + reason);
+        });
      } else {
        this.flashMessage.show(data.message, {
          cssClass: 'alert-danger',

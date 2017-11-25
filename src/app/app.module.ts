@@ -1,13 +1,12 @@
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { DevExtremeModule } from 'devextreme-angular';
-import { MaterialImportModule } from './material-module';
 
 import { ClassesComponent } from '../app/components/classes/classes.component';
 import { DashboardComponent } from '../app/components/dashboard/dashboard.component';
@@ -19,12 +18,13 @@ import { NavbarComponent } from '../app/components/navbar/navbar.component';
 import { RegisterComponent } from '../app/components/register/register.component';
 import { SearchComponent } from '../app/components/search/search.component';
 import { SidebarComponent } from '../app/components/sidebar/sidebar.component';
-import { AppComponent } from './app.component';
-
 import { AuthService } from '../app/services/auth.service';
 import { HttpService } from '../app/services/http.service';
-import { ResponseInterceptor } from './interceptors/responses.interceptor';
+import { AppComponent } from './app.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ResponseInterceptor } from './interceptors/responses.interceptor';
+import { MaterialImportModule } from './material-module';
+import { NotificationService } from './services/notification.service';
 import { SpinnerService } from './services/spinner.service';
 
 
@@ -73,7 +73,8 @@ const appRoutes: Routes = [
       useClass: ResponseInterceptor,
       multi: true
     },
-    SpinnerService
+    SpinnerService,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })
