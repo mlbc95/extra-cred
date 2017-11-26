@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs/Rx';
 import { AuthService } from '../../services/auth.service';
 import { NotificationService } from '../../services/notification.service';
 import { SpinnerService } from '../../services/spinner.service';
+import { ILoginResponse } from '../../models/i-data-response';
 
 @Component({
   selector: 'app-login',
@@ -38,28 +39,29 @@ export class LoginComponent implements OnInit, OnDestroy {
      password: this.userPw
    };
 
-   this.authService.authenticateUser(user).subscribe(data => {
-     if (data.success) {
-      //  this.flashMessage.show(data.message, {
-      //    cssClass: 'alert-success',
-      //    timeout: 5000
-      //  });
-      this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
+   this.authService.authenticateUser(user).subscribe((data: ILoginResponse) => {
+     console.log(data);
+     this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
         this.showSpinner = state;
-      });
+     });
+     if (data.success) {
       this.notificationService.showSuccess(data.title, data.message)
         .then((result) => {
           console.log(result);
           this.router.navigate(['/user/dashboard']);
         })
         .catch((reason) => {
-          console.log('--> Alert dismissed: ' + reason);
+          console.log('--> Alert dismissed: ', reason);
         });
      } else {
-       this.flashMessage.show(data.message, {
-         cssClass: 'alert-danger',
-         timeout: 5000
-       });
+       console.log(data);
+       this.notificationService.showError(data.title, data.message)
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((reason) => {
+          console.log('--> Error dismissed: ', reason);
+        });
      }
    });
   }

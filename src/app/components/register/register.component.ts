@@ -1,7 +1,10 @@
-import { AuthService } from '../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import {FlashMessagesService} from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
+
+import { IRegisterResponse } from '../../models/i-data-response';
+import { AuthService } from '../../services/auth.service';
+import { NotificationService } from '../../services/notification.service';
 
 
 @Component({
@@ -19,6 +22,7 @@ export class RegisterComponent implements OnInit {
     private flashMessage: FlashMessagesService,
     private authService: AuthService,
     private router: Router,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -38,34 +42,33 @@ export class RegisterComponent implements OnInit {
         password: this.userPw
       };
 
-      this.authService.register(user).subscribe(data => {
+      this.authService.register(user).subscribe((data: IRegisterResponse) => {
         if (data.success) {
-
-          this.flashMessage.show(data.message, {
-            cssClass: 'alert-success',
-            timeout: 5000
-          });
-          // this.router.navigate(['login'])
+          this.notificationService.showSuccess(data.title, data.message)
+            .then((result) => {
+              this.router.navigate(['login']);
+            })
+            .catch((reason) => {
+              console.log('--> Alert dismissed: ', reason);
+            });
         }else {
-          this.flashMessage.show(data.message, {
-            cssClass: 'alert-danger',
-            timeout: 5000
+          this.notificationService.showError(data.title, data.message)
+          .then((result) => {
+            console.log(result);
+          })
+          .catch((reason) => {
+            console.log('--> Error dismissed: ', reason);
           });
         }
       });
-
-
     } else {
-
-      this.flashMessage.show('Please Enter a Valid Email', {
-        cssClass: 'alert-danger',
-        timeout: 5000
-      });
-
-
+      this.notificationService.showError('error', 'Please use a valid email')
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((reason) => {
+          console.log(reason);
+        });
     }
-
-
-
   }
 }

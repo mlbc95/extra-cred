@@ -13,4 +13,12 @@ export class NotificationService {
       type: type
     });
   }
+
+  showError(type, message) {
+    return swal({
+      title: 'Error',
+      text: message,
+      type: type
+    });
+  }
 }
