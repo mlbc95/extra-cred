@@ -23,10 +23,9 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private notificationService: NotificationService
-  ) { }
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   register() {
 
@@ -51,14 +50,14 @@ export class RegisterComponent implements OnInit {
             .catch((reason) => {
               console.log('--> Alert dismissed: ', reason);
             });
-        }else {
+        } else {
           this.notificationService.showError(data.title, data.message)
-          .then((result) => {
-            console.log(result);
-          })
-          .catch((reason) => {
-            console.log('--> Error dismissed: ', reason);
-          });
+            .then((result) => {
+              console.log(result);
+            })
+            .catch((reason) => {
+              console.log('--> Error dismissed: ', reason);
+            });
         }
       });
     } else {

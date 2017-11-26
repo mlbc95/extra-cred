@@ -15,7 +15,7 @@ export class ResponseInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest < any > , next: HttpHandler): Observable < HttpEvent < any >> {
     this._spinnerService.requestStarted();
     return next.handle(req).do(
-      (event: HttpEvent<any>) => {
+      (event: HttpEvent < any > ) => {
         if (event instanceof HttpResponse) {
           console.log('--> event: ', event);
           console.log('--> status: ', event.status);
@@ -27,7 +27,6 @@ export class ResponseInterceptor implements HttpInterceptor {
           console.log('--> error: ', err);
           console.log('--> errorStatus: ', err.status);
           this._spinnerService.requestEnded();
-          this._notificationService.showError(err.error.title, err.error.message);
         }
       }
     );

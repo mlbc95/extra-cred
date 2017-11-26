@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Student } from './Student';
 import { Professor } from './Professor';
 
@@ -6,6 +7,10 @@ export interface IDataResponse {
   title: string;
   message: string;
   error?: Error;
+}
+
+export interface IErrorResponse extends HttpErrorResponse {
+  error: IDataResponse;
 }
 
 export interface IStudentResponse extends IDataResponse {

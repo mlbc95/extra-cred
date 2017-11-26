@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Subscription } from 'rxjs/Rx';
 
+import { IErrorResponse, ILoginResponse } from '../../models/i-data-response';
 import { AuthService } from '../../services/auth.service';
 import { NotificationService } from '../../services/notification.service';
 import { SpinnerService } from '../../services/spinner.service';
-import { ILoginResponse } from '../../models/i-data-response';
 
 @Component({
   selector: 'app-login',
@@ -25,45 +25,40 @@ export class LoginComponent implements OnInit, OnDestroy {
     private flashMessage: FlashMessagesService,
     private spinnerService: SpinnerService,
     private notificationService: NotificationService
-  ) { }
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   login() {
     this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
       this.showSpinner = state;
     });
-   const user = {
-     email: this.userEmail,
-     password: this.userPw
-   };
+    const user = {
+      email: this.userEmail,
+      password: this.userPw
+    };
 
-   this.authService.authenticateUser(user).subscribe((data: ILoginResponse) => {
-     console.log(data);
-     this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
-        this.showSpinner = state;
-     });
-     if (data.success) {
-      this.notificationService.showSuccess(data.title, data.message)
-        .then((result) => {
-          console.log(result);
-          this.router.navigate(['/user/dashboard']);
-        })
-        .catch((reason) => {
-          console.log('--> Alert dismissed: ', reason);
+    this.authService.authenticateUser(user).subscribe(
+      (data: ILoginResponse) => {
+        console.log(data);
+        this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
+          this.showSpinner = state;
         });
-     } else {
-       console.log(data);
-       this.notificationService.showError(data.title, data.message)
-        .then((result) => {
-          console.log(result);
-        })
-        .catch((reason) => {
-          console.log('--> Error dismissed: ', reason);
+        this.notificationService.showSuccess(data.title, data.message)
+          .then((result) => {
+            console.log(result);
+            this.router.navigate(['/user/dashboard']);
+          })
+          .catch((reason) => {
+            console.log('--> Alert dismissed: ', reason);
+          });
+      },
+      (err: IErrorResponse) => {
+        this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
+          this.showSpinner = state;
         });
-     }
-   });
+        this.notificationService.showError(err.error.title, err.error.message);
+      });
   }
 
   ngOnDestroy() {
