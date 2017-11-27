@@ -1,10 +1,10 @@
 <div class="login-wrapper">
-    
-  
+
+
       <div class="login-form center-object">
-    
+
         <div class="card">
-          <form class="form-group"> 
+          <form class="form-group">
               <mat-form-field class="form-control">
                   <input matInput [(ngModel)]="fName" name="fName" placeholder="First Name">
                 </mat-form-field>
@@ -15,16 +15,15 @@
               <input matInput [(ngModel)]="userEmail" name="email" placeholder="Email">
             </mat-form-field>
             <mat-form-field class="form-control">
-              <input type='password' [(ngModel)]="userPw"  name="password"matInput placeholder="Password">
+              <input type='password' [(ngModel)]="userPw"  name="password"matInput placeholder="Password" style="height: 14px;">
             </mat-form-field>
           </form>
           <button mat-raised-button color="primary" (click)="register()" type="submit">Register</button>
-         
+
         </div>
-    
+
       </div>
-    
+
     </div>
-    
-    
-    
+
+    <app-spinner *ngIf="showSpinner"></app-spinner>

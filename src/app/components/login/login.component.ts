@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   userEmail: string;
   userPw: string;
   showSpinner = false;
-  private spinnerSub: Subscription;
+  private spinnerSub: Subscription = new Subscription;
 
   constructor(
     private authService: AuthService,
