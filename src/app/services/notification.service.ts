@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import swal from 'sweetalert2';
+import swal, { SweetAlertType } from 'sweetalert2';
 
 @Injectable()
 export class NotificationService {
 
   constructor() { }
 
-  showSuccess(type, message) {
+  showSuccess(type: SweetAlertType, message: string) {
     return swal({
       title: 'Success',
       text: message,
@@ -14,7 +14,7 @@ export class NotificationService {
     });
   }
 
-  showError(type, message) {
+  showError(type: SweetAlertType, message) {
     return swal({
       title: 'Error',
       text: message,

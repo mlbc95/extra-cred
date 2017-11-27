@@ -3,10 +3,11 @@ import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Subscription } from 'rxjs/Rx';
 
-import { IErrorResponse, ILoginResponse } from '../../models/i-data-response';
+import { IErrorResponse, ILoginResponse } from '../../models/DataResponse';
 import { AuthService } from '../../services/auth.service';
 import { NotificationService } from '../../services/notification.service';
 import { SpinnerService } from '../../services/spinner.service';
+import { SweetAlertType } from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
           this.showSpinner = state;
         });
-        this.notificationService.showSuccess(data.title, data.message)
+        this.notificationService.showSuccess(data.title as SweetAlertType, data.message)
           .then((result) => {
             console.log(result);
             this.router.navigate(['/user/dashboard']);
@@ -57,7 +58,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
           this.showSpinner = state;
         });
-        this.notificationService.showError(err.error.title, err.error.message);
+        this.notificationService.showError(err.error.title as SweetAlertType, err.error.message);
       });
   }
 

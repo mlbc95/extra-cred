@@ -4,9 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
-import { IRegisterResponse, IErrorResponse } from '../../models/i-data-response';
+import { IRegisterResponse, IErrorResponse } from '../../models/DataResponse';
 import { AuthService } from '../../services/auth.service';
 import { NotificationService } from '../../services/notification.service';
+import { SweetAlertType } from 'sweetalert2';
 
 
 @Component({
@@ -54,7 +55,7 @@ export class RegisterComponent implements OnInit {
           this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
             this.showSpinner = state;
           });
-          this.notificationService.showSuccess(data.title, data.message)
+          this.notificationService.showSuccess(data.title as SweetAlertType, data.message)
             .then((result) => {
               console.log(result);
               this.router.navigate(['/login']);
@@ -67,7 +68,9 @@ export class RegisterComponent implements OnInit {
           this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
             this.showSpinner = state;
           });
-          this.notificationService.showError(err.error.title, err.error.message);
+          this.notificationService.showError(
+            err.error.title as SweetAlertType,
+            err.error.error ? err.error.error : err.error.message);
         }
       );
     } else {

@@ -6,7 +6,7 @@ export interface IDataResponse {
   success: boolean;
   title: string;
   message: string;
-  error?: Error;
+  error?: Error | string | any;
 }
 
 export interface IErrorResponse extends HttpErrorResponse {
