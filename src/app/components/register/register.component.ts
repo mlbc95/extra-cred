@@ -68,9 +68,7 @@ export class RegisterComponent implements OnInit {
           this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
             this.showSpinner = state;
           });
-          this.notificationService.showError(
-            err.error.title as SweetAlertType,
-            err.error.error ? err.error.error : err.error.message);
+          this.notificationService.showError(err.error.title as SweetAlertType, err.error.message);
         }
       );
     } else {
