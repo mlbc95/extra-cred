@@ -33,7 +33,7 @@ export class ProfessorLandingComponent implements OnInit {
         }
       );
     } else {
-      this.notificationService.showError('error', 'Email cannot be empty');
+      this.notificationService.showError('error' as SweetAlertType, 'Email cannot be empty');
     }
   }
 
