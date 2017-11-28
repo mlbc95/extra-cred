@@ -61,6 +61,7 @@ const appRoutes: Routes = [
     SpinnerComponent,
     ProfessorLandingComponent,
     StudentsLandingComponent,
+    ProfessorVerifyComponent
   ],
   imports: [
     BrowserModule,
