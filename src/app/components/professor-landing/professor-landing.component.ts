@@ -29,7 +29,7 @@ export class ProfessorLandingComponent implements OnInit {
           this.notificationService.showSuccess(data.title as SweetAlertType, `An email has been sent to ${this.email}. Please check your email and follow the instruction in the email. Thank you.`);
         },
         (err: IErrorResponse) => {
-          this.notificationService.showError(err.error.title as SweetAlertType, err.statusText);
+          this.notificationService.showError(err.error.title as SweetAlertType, err.error.message);
         }
       );
     } else {

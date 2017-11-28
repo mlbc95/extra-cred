@@ -1,3 +1,13 @@
-<p>
-  professor-verify works!
-</p>
+<div class="container professor-verify-wrapper">
+  <div class="card">
+    <div class="card-body">
+      <p>Please re-enter your email to proceed with verification.</p>
+      <mat-form-field class="form-control">
+        <input matInput [(ngModel)]="email" placeholder="Email">
+      </mat-form-field>
+    </div>
+    <div class="card-footer">
+      <button mat-raised-button color="primary" (click)="verifyProfessor()" type="button">Submit</button>
+    </div>
+  </div>
+</div>

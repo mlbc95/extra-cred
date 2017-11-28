@@ -30,4 +30,9 @@ export class AuthService {
     return this.httpService.post(AuthService.professorsUrl + '/init', body, {'Content-Type': 'application/json'});
   }
 
+  verifyProfessor(email: string, token: string) {
+    const body = { email: email };
+    return this.httpService.post(AuthService.professorsUrl + '/verify?token=' + token, body, {'Content-Type': 'application/json'});
+  }
+
 }
