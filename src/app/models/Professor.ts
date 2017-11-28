@@ -6,4 +6,5 @@ export interface Professor {
   createdOn?: Date;
   lastVisited?: Date;
   classes?: any[];
+  _id?: string;
 }

@@ -6,4 +6,5 @@ export interface Student {
   lastVisited?: Date;
   classes?: any[];
   submissions?: any[];
+  _id?: string;
 }

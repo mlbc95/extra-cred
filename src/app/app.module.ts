@@ -26,16 +26,20 @@ import { ResponseInterceptor } from './interceptors/responses.interceptor';
 import { MaterialImportModule } from './material-module';
 import { NotificationService } from './services/notification.service';
 import { SpinnerService } from './services/spinner.service';
+import { ProfessorLandingComponent } from './components/professor-landing/professor-landing.component';
+import { StudentsLandingComponent } from './components/students-landing/students-landing.component';
 
 
 const appRoutes: Routes = [
   {path: '', component: PublicComponent, children: [
     {path: '', component: HomeComponent},
     {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent}
+    {path: 'register', component: RegisterComponent},
+    {path: 'professor-landing', component: ProfessorLandingComponent},
+    {path: 'students-landing', component: StudentsLandingComponent}
   ]},
   {path: 'user', component: UserComponent, children: [
-    {path: 'dashboard', component: DashboardComponent}
+    {path: ':role/dashboard/:id', component: DashboardComponent}
   ]}
 ];
 
@@ -53,6 +57,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     SidebarComponent,
     SpinnerComponent,
+    ProfessorLandingComponent,
+    StudentsLandingComponent,
   ],
   imports: [
     BrowserModule,

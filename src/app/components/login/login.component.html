@@ -8,9 +8,15 @@
           <input matInput [(ngModel)]="userEmail" name="email" placeholder="Email">
         </mat-form-field>
         <mat-form-field class="form-control">
-          <input type='password' [(ngModel)]="userPw"  name="password" matInput placeholder="Password" style="height:14px;">
+          <input type='password' [(ngModel)]="userPw" name="password" matInput placeholder="Password" style="height:14px;">
         </mat-form-field>
       </form>
+      <mat-radio-group class="example-radio-group" [(ngModel)]="userRole">
+        <mat-radio-button class="example-radio-button" value="student"> Student
+        </mat-radio-button>
+        <mat-radio-button class="example-radio-button" value="professor"> Professor
+        </mat-radio-button>
+      </mat-radio-group>
       <button mat-raised-button color="primary" (click)="login()" type="submit">Login</button>
 
     </div>
@@ -20,7 +26,4 @@
 </div>
 
 
-  <app-spinner *ngIf="showSpinner"></app-spinner>
-
-
-
+<app-spinner *ngIf="showSpinner"></app-spinner>

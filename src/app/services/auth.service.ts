@@ -17,8 +17,17 @@ export class AuthService {
     return this.httpService.post(AuthService.studentsUrl + '/register', user, {'Content-Type': 'application/json'});
   }
 
-  authenticateUser(user) {
-    return this.httpService.post(AuthService.studentsUrl + '/login', user, {'Content-Type': 'application/json'});
+  authenticateUser(user, role) {
+    if (role === 'student') {
+      return this.httpService.post(AuthService.studentsUrl + '/login', user, {'Content-Type': 'application/json'});
+    } else if (role === 'professor') {
+      return this.httpService.post(AuthService.professorsUrl + '/login', user, {'Content-Type': 'application/json'});
+    }
+  }
+
+  initializeProfessorAccount(email: string) {
+    const body = {email: email};
+    return this.httpService.post(AuthService.professorsUrl + '/init', body, {'Content-Type': 'application/json'});
   }
 
 }

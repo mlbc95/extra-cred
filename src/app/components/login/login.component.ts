@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   userEmail: string;
   userPw: string;
   showSpinner = false;
+  userRole = 'student';
   private spinnerSub: Subscription = new Subscription;
 
   constructor(
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       password: this.userPw
     };
 
-    this.authService.authenticateUser(user).subscribe(
+    this.authService.authenticateUser(user, this.userRole).subscribe(
       (data: ILoginResponse) => {
         console.log(data);
         this.spinnerSub = this.spinnerService.spinnerState.subscribe(state => {
@@ -48,7 +49,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.notificationService.showSuccess(data.title as SweetAlertType, data.message)
           .then((result) => {
             console.log(result);
-            this.router.navigate(['/user/dashboard']);
+            this.router.navigate([`/user/${this.userRole}/dashboard/${data.response._id}`]);
           })
           .catch((reason) => {
             console.log('--> Alert dismissed: ', reason);

@@ -1,0 +1,16 @@
+<div class="container professor-landing-wrapper">
+  <div class="card">
+    <div class="card-body">
+      <p>Please use an email that you can have access to. This email will be your username.</p>
+      <mat-form-field class="form-control">
+        <input matInput [(ngModel)]="email" placeholder="Email">
+      </mat-form-field>
+    </div>
+    <div class="card-footer">
+      <button mat-raised-button color="primary" (click)="initProf()" type="button">Submit</button>
+      <span class="float-right">
+        Already have an account?  <button mat-raised-button [routerLink]="['/login']" type="button">Login</button>
+      </span>
+    </div>
+  </div>
+</div>

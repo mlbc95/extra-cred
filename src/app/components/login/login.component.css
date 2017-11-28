@@ -1,18 +1,33 @@
 .login-wrapper{
-    height: 100vh;
+    height: calc(100vh - 79.78px);
     width: 100vw;
     background: url("../../../assets/umsl_night.jpg")no-repeat;
     background-position: center center;
-    background-size: cover;    
+    background-size: cover;
 }
 
 .login-form{
     position: absolute;
-    top: 65vh;
+    top: 50vh;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
+
+.login-form .form-group {
+  margin: 0;
+}
 .card{
     background-color: lightgrey;
-    opacity: 0.90;    
+    opacity: 0.90;
+}
+
+.example-radio-group {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.example-radio-button {
+  margin: 5px;
 }
