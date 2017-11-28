@@ -21,13 +21,14 @@ import { SidebarComponent } from '../app/components/sidebar/sidebar.component';
 import { AuthService } from '../app/services/auth.service';
 import { HttpService } from '../app/services/http.service';
 import { AppComponent } from './app.component';
+import { ProfessorLandingComponent } from './components/professor-landing/professor-landing.component';
+import { ProfessorVerifyComponent } from './components/professor-verify/professor-verify.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { StudentsLandingComponent } from './components/students-landing/students-landing.component';
 import { ResponseInterceptor } from './interceptors/responses.interceptor';
 import { MaterialImportModule } from './material-module';
 import { NotificationService } from './services/notification.service';
 import { SpinnerService } from './services/spinner.service';
-import { ProfessorLandingComponent } from './components/professor-landing/professor-landing.component';
-import { StudentsLandingComponent } from './components/students-landing/students-landing.component';
 
 
 const appRoutes: Routes = [
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'professor-landing', component: ProfessorLandingComponent},
+    {path: 'professor-verify', component: ProfessorVerifyComponent},
     {path: 'students-landing', component: StudentsLandingComponent}
   ]},
   {path: 'user', component: UserComponent, children: [
