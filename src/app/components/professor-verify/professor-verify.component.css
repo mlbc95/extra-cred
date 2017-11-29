@@ -1,0 +1,8 @@
+.professor-verify-wrapper {
+  height: calc(100vh-79.78px);
+  width: 100vw;
+}
+
+.card {
+  top: 35vh;
+}
