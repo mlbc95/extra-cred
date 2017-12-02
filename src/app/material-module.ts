@@ -18,7 +18,8 @@ import {
     MatIconModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
-    MatToolbarRow
+    MatToolbarRow,
+    MatSidenavModule
   } from '@angular/material';
 
   import {NgModule} from '@angular/core';
@@ -44,6 +45,7 @@ import {
       MatIconModule,
       MatProgressSpinnerModule,
       MatToolbarModule,
+      MatSidenavModule
 
   ],
     exports: [
@@ -65,7 +67,8 @@ import {
       MatProgressBarModule,
       MatIconModule,
       MatProgressSpinnerModule,
-      MatToolbarModule
+      MatToolbarModule,
+      MatSidenavModule
   ],
   })
   export class MaterialImportModule {}

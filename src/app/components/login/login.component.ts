@@ -17,8 +17,9 @@ import { SweetAlertType } from 'sweetalert2';
 export class LoginComponent implements OnInit, OnDestroy {
   userEmail: string;
   userPw: string;
-  showSpinner = false;
   userRole = 'student';
+  showSpinner = false;
+
   private spinnerSub: Subscription = new Subscription;
 
   constructor(
