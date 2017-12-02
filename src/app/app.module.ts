@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { DevExtremeModule } from 'devextreme-angular';
+import { SlideMenuModule } from 'cuppa-ng2-slidemenu/cuppa-ng2-slidemenu'; 
 
 import { ClassesComponent } from '../app/components/classes/classes.component';
 import { DashboardComponent } from '../app/components/dashboard/dashboard.component';
@@ -72,7 +73,8 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     FlashMessagesModule,
-    HttpClientModule
+    HttpClientModule,
+    SlideMenuModule
   ],
   providers: [
     AuthService,

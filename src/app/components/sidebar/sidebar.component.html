@@ -1,5 +1,5 @@
-<mat-sidenav-container >
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+<!-- <mat-sidenav-container >
+  <mat-sidenav class="sidenav-links" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
                (closed)="events.push('close!')">
     Sidenav content
   </mat-sidenav>
@@ -8,5 +8,5 @@
     <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
     <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
   </mat-sidenav-content>
-</mat-sidenav-container>
-
+</mat-sidenav-container> -->
+<cuppa-slidemenu [menulist]="menuItemsArray" (open)="onMenuOpen()" (close)="onMenuClose()" (onItemSelect)="onItemSelect($event)"></cuppa-slidemenu>
