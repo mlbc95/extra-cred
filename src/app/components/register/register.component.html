@@ -18,7 +18,13 @@
               <input type='password' [(ngModel)]="userPw"  name="password"matInput placeholder="Password" style="height: 14px;">
             </mat-form-field>
           </form>
-          <button mat-raised-button color="primary" (click)="register()" type="submit">Register</button>
+          <div class="card-footer">
+            <button mat-raised-button color="primary" (click)="register()" type="submit">Register</button>
+            <span class="float-right">
+              Already have an account?  <button mat-raised-button [routerLink]="['/login']" type="button">Login</button>
+            </span>
+          </div>
+          
 
         </div>
 

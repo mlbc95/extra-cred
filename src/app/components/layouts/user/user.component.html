@@ -1,6 +1,6 @@
-<app-sidebar>
+<app-sidebar (sidebarOpened)="onSidebarToggleHandler($event)">
 </app-sidebar>
-<div class="container mx-auto my-auto">
+<div class="container-fluid dashboard-wrapper" #dashboardWrapper>
         <router-outlet></router-outlet>
 </div>
 

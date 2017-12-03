@@ -6,8 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { SlideMenuModule } from 'cuppa-ng2-slidemenu/cuppa-ng2-slidemenu';
 import { DevExtremeModule } from 'devextreme-angular';
-import { SlideMenuModule } from 'cuppa-ng2-slidemenu/cuppa-ng2-slidemenu'; 
 
 import { ClassesComponent } from '../app/components/classes/classes.component';
 import { DashboardComponent } from '../app/components/dashboard/dashboard.component';
@@ -29,6 +29,7 @@ import { StudentsLandingComponent } from './components/students-landing/students
 import { ResponseInterceptor } from './interceptors/responses.interceptor';
 import { MaterialImportModule } from './material-module';
 import { NotificationService } from './services/notification.service';
+import { RoutesListeningService } from './services/routes-listening.service';
 import { SpinnerService } from './services/spinner.service';
 
 
@@ -85,7 +86,8 @@ const appRoutes: Routes = [
       multi: true
     },
     SpinnerService,
-    NotificationService
+    NotificationService,
+    RoutesListeningService
   ],
   bootstrap: [AppComponent]
 })

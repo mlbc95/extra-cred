@@ -9,4 +9,10 @@
     <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
   </mat-sidenav-content>
 </mat-sidenav-container> -->
-<cuppa-slidemenu [menulist]="menuItemsArray" (open)="onMenuOpen()" (close)="onMenuClose()" (onItemSelect)="onItemSelect($event)"></cuppa-slidemenu>
+<cuppa-slidemenu 
+  [config]="menuConfig"
+  [menulist]="menuItemsArray" 
+  (open)="onMenuOpen()" 
+  (close)="onMenuClose()" 
+  (onItemSelect)="onItemSelect($event)">
+</cuppa-slidemenu>
