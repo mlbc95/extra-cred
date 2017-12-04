@@ -25,12 +25,12 @@ import { AppComponent } from './app.component';
 import { ProfessorLandingComponent } from './components/professor-landing/professor-landing.component';
 import { ProfessorVerifyComponent } from './components/professor-verify/professor-verify.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { StudentsLandingComponent } from './components/students-landing/students-landing.component';
 import { ResponseInterceptor } from './interceptors/responses.interceptor';
 import { MaterialImportModule } from './material-module';
 import { NotificationService } from './services/notification.service';
 import { RoutesListeningService } from './services/routes-listening.service';
 import { SpinnerService } from './services/spinner.service';
+import { SearchDetailComponent } from './components/search-detail/search-detail.component';
 
 
 const appRoutes: Routes = [
@@ -40,10 +40,11 @@ const appRoutes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'professor-landing', component: ProfessorLandingComponent},
     {path: 'professor-verify', component: ProfessorVerifyComponent},
-    {path: 'students-landing', component: StudentsLandingComponent}
   ]},
   {path: 'user', component: UserComponent, children: [
-    {path: ':role/dashboard/:id', component: DashboardComponent}
+    {path: ':role/dashboard/:id', component: DashboardComponent},
+    {path:'search/:keyword', component:SearchComponent},
+    {path:'search/detail/:id',component:SearchDetailComponent}
   ]}
 ];
 
@@ -62,8 +63,8 @@ const appRoutes: Routes = [
     SidebarComponent,
     SpinnerComponent,
     ProfessorLandingComponent,
-    StudentsLandingComponent,
-    ProfessorVerifyComponent
+    ProfessorVerifyComponent,
+    SearchDetailComponent
   ],
   imports: [
     BrowserModule,

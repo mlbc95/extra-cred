@@ -9,7 +9,8 @@
          <div class="float-left">
            <p>
               Professor: Joe 
-              <br>
+            </p>
+            <p class="float-left">
               Events:3
            </p>
          </div>
@@ -21,7 +22,7 @@
       
       <mat-card class="mt-4">
          
-      <input matInput placeholder="Search for Classes" type="text" class="example-right-align">
+      <input #text (keyup.enter)="search(text.value)" matInput placeholder="Search for Classes" type="text" class="example-right-align">
       
            
           
