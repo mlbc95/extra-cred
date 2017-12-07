@@ -1,16 +1,19 @@
 import { Observable } from 'rxjs/Rx';
 import { Router, RoutesRecognized } from '@angular/router';
 import { Injectable } from '@angular/core';
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class RoutesListeningService {
   routerEvents: RoutesRecognized[];
+  private userIdSubject: Subject<string> = new Subject<string>();
+  userIdState$ = this.userIdSubject.asObservable();
   constructor() {
   }
 
   getRouteEvent(routerEvent: RoutesRecognized[]) {
     this.routerEvents = routerEvent;
-  } 
+  }
 
   resolvePreviousRoutes(): Observable<string> {
     if (this.routerEvents) {
@@ -33,5 +36,13 @@ export class RoutesListeningService {
         observer.error('Router events resolve error --> : Login was landed on App Init');
       });
     }
+  }
+
+  saveCurrentUserId(id: string): void {
+      this.userIdSubject.next(id);
+  }
+
+  loadCurrentUserId(): Observable<string> {
+      return this.userIdState$;
   }
 }

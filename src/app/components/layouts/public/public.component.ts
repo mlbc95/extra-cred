@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RoutesRecognized } from '@angular/router';
+import { NavigationEnd, Router, RoutesRecognized } from '@angular/router';
 
 import { RoutesListeningService } from '../../../services/routes-listening.service';
 import { filter, pairwise } from 'rxjs/operators';
