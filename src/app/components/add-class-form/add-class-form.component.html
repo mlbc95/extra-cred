@@ -1,0 +1,45 @@
+<div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">Class Name:</label>
+  <div class="col-10">
+    <input class="form-control" type="text" [(ngModel)]='cName'placeholder="Enter Class Name" id="example-text-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">Class Description:</label>
+  <div class="col-10">
+    <input class="form-control" type="text" [(ngModel)]='cDsc'  placeholder="Enter Class Description" id="example-text-input">
+  </div>
+</div>
+<hr>
+<label>Events</label>   <button class="btn btn-primary" (click)="addEvent()">+ </button>
+<form [formGroup]="addEventForm" >
+  <div formArrayName="events">
+    <div class="card" *ngFor="let eventControl of getEventsControls(addEventForm); let i = index">
+      <div [formGroupName]="i">
+        <div class="form-group row">
+          <label for="example-text-input" class="col-2 col-form-label">Event Date:</label>
+          <div class="col-10">
+            <input class="form-control" formControlName="date" type="text" placeholder="Enter Class Description" id="example-text-input">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-text-input" class="col-2 col-form-label">Event Name:</label>
+          <div class="col-10">
+            <input class="form-control" formControlName="name" type="text" placeholder="Enter Class Description" id="example-text-input">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-text-input" class="col-2 col-form-label">Event Description:</label>
+          <div class="col-10">
+            <input class="form-control" formControlName="description" type="text" placeholder="Enter Class Description" id="example-text-input">
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-danger" (click)="removeEvent(i)" *ngIf="getEventsControls(addEventForm).length > 1">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
+<button class="btn btn-primary" (click)="onSubmit()">Submit</button>

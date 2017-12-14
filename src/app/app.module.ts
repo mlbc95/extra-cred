@@ -1,6 +1,6 @@
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,6 +31,7 @@ import { NotificationService } from './services/notification.service';
 import { RoutesListeningService } from './services/routes-listening.service';
 import { SpinnerService } from './services/spinner.service';
 import { SearchDetailComponent } from './components/search-detail/search-detail.component';
+import { AddClassFormComponent } from './components/add-class-form/add-class-form.component';
 
 
 const appRoutes: Routes = [
@@ -44,7 +45,9 @@ const appRoutes: Routes = [
   {path: 'user', component: UserComponent, children: [
     {path: ':role/dashboard/:id', component: DashboardComponent},
     {path:'search/:keyword', component:SearchComponent},
-    {path:'search/detail/:id',component:SearchDetailComponent}
+    {path:'search/detail/:id',component:SearchDetailComponent},
+    //temp route to view form 
+    {path:'form',component:AddClassFormComponent}
   ]}
 ];
 
@@ -64,7 +67,8 @@ const appRoutes: Routes = [
     SpinnerComponent,
     ProfessorLandingComponent,
     ProfessorVerifyComponent,
-    SearchDetailComponent
+    SearchDetailComponent,
+    AddClassFormComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,8 @@ const appRoutes: Routes = [
     HttpModule,
     FlashMessagesModule,
     HttpClientModule,
-    SlideMenuModule
+    SlideMenuModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthService,
